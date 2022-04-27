@@ -14,8 +14,6 @@ defmodule Remote.Accounts.UserTest do
     {:points, :integer}
   ]
 
-  @required_fields ~w(points)a
-
   describe "User Schema Structure: " do
     test "ensures that if the user schema file changes, this test fails of not updated" do
       actual_field_with_types =

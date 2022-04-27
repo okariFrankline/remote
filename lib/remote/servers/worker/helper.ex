@@ -90,7 +90,7 @@ defmodule Remote.Servers.Worker.Helper do
   @spec do_update_users(worker_state :: Worker.t()) :: new_worker_state :: Worker.t()
   def do_update_users(%Worker{} = state) do
     with(
-      {:ok, %Result{num_rows: 1_000_000}} <- do_update_all_users(),
+      {:ok, %Result{command: :update}} <- do_update_all_users(),
       {:ok, new_max_number} <- generate_new_max_number(),
       {:ok, new_state} <- build_new_state_from_update(state, new_max_number),
       {:ok, _ref} <- schedule_next_run()

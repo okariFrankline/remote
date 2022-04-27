@@ -1,7 +1,7 @@
 defmodule Remote.Servers.Worker.HelperTest do
   @moduledoc false
 
-  use Remote.DataCase, async: true
+  use Remote.DataCase, async: false
 
   alias Remote.Accounts.User
 

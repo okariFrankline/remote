@@ -14,7 +14,7 @@ Installation can be done using [asdf](https://asdf-vm.com)
 
 ## Phoenix
 
-The application uses the latest version of**Phoenix v1.6.6** which can be installed from [documentation]()
+The application uses the latest version of**Phoenix v1.6.6** which can be installed from the [documentations](https://hexdocs.pm/phoenix/installation.html#phoenix)
 
 ## Postgres
 
@@ -22,18 +22,30 @@ The application uses the latest version of PostgreSQL. However, any version abov
 
 # Running the application
 
-After successful cloning of the application run:
+After successful cloning of the application run the commands below from your terminal
+
+cd into the project
+
+```
+cd remote/
+```
 
 Get all the dependencies
 
 ```
-$ mix do deps.get, compile
+mix do deps.get, compile
+```
+
+Run the tests:
+
+```
+mix test
 ```
 
 Setup the database by running:
 
 ```
-$ mix ecto.setup
+mix ecto.setup
 ```
 
 Start the application using:
