@@ -7,5 +7,7 @@ defmodule RemoteWeb.Router do
 
   scope "/api", RemoteWeb do
     pipe_through :api
+
+    get "/", UserController, :fetch_users
   end
 end

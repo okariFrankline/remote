@@ -29,19 +29,19 @@ defmodule Remote.Servers.Worker do
   It returns 2 users whose points are greater than the max number
   currently stored within Worker state and the previous timestamp
   """
-  @spec fetch_users() :: {:ok, %{users: list(User.t()) | nil, timestamp: DateTime.t()}}
+  @spec fetch_users() :: {:ok, %{users: list(User.t()) | [], timestamp: DateTime.t()}}
   def fetch_users do
     GenServer.call(__MODULE__, :fetch_users)
   end
 
   @impl GenServer
   def init(_state) do
-    {:ok, __MODULE__.new(), {:continue, :schedule_next_update}}
+    {:ok, __MODULE__.new(), {:continue, :update_users}}
   end
 
   @impl GenServer
-  def handle_continue(:schedule_next_update, state) do
-    {:noreply, Helper.do_schedule_next_update(state)}
+  def handle_continue(:update_users, state) do
+    {:noreply, Helper.do_update_users(state)}
   end
 
   @impl GenServer

@@ -13,11 +13,15 @@ alias Remote.Accounts.User
 
 alias Remote.Repo
 
+require Logger
+
 now = NaiveDateTime.truncate(NaiveDateTime.utc_now(), :second)
+
+Logger.info("Seeding 1_000_000 users to the database ...", ansi_color: :green)
 
 1..1_000_000
 |> Stream.map(fn _ -> %{points: 0, updated_at: now, inserted_at: now} end)
-|> Stream.chunk_every(50_000)
+|> Stream.chunk_every(10_000)
 |> Task.async_stream(
   fn chunk ->
     {count, _} = Repo.insert_all(User, chunk, [])
@@ -25,3 +29,5 @@ now = NaiveDateTime.truncate(NaiveDateTime.utc_now(), :second)
   ordered: false
 )
 |> Stream.run()
+
+Logger.info("Seeding complete", ansi_color: :green)

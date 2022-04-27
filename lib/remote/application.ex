@@ -5,6 +5,8 @@ defmodule Remote.Application do
 
   use Application
 
+  alias Remote.Servers.Worker
+
   @impl true
   def start(_type, _args) do
     children = [
@@ -15,9 +17,9 @@ defmodule Remote.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: Remote.PubSub},
       # Start the Endpoint (http/https)
-      RemoteWeb.Endpoint
-      # Start a worker by calling: Remote.Worker.start_link(arg)
+      RemoteWeb.Endpoint,
       # {Remote.Worker, arg}
+      {Worker, [name: Worker]}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

@@ -23,6 +23,7 @@ defmodule RemoteWeb.ConnCase do
       import Plug.Conn
       import Phoenix.ConnTest
       import RemoteWeb.ConnCase
+      import Remote.Support.Factory
 
       alias RemoteWeb.Router.Helpers, as: Routes
 
