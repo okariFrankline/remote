@@ -17,7 +17,7 @@ require Logger
 
 now = NaiveDateTime.truncate(NaiveDateTime.utc_now(), :second)
 
-Logger.info("Seeding 1_000_000 users to the database ...", ansi_color: :green)
+Logger.info("Seeding 1_000_000 users to the database 😅 ...", ansi_color: :green)
 
 1..1_000_000
 |> Stream.map(fn _ -> %{points: 0, updated_at: now, inserted_at: now} end)
@@ -30,4 +30,4 @@ Logger.info("Seeding 1_000_000 users to the database ...", ansi_color: :green)
 )
 |> Stream.run()
 
-Logger.info("Seeding complete", ansi_color: :green)
+Logger.info("Seeding complete 🥳", ansi_color: :green)
