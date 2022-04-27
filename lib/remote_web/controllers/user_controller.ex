@@ -10,6 +10,7 @@ defmodule RemoteWeb.UserController do
     with {:ok, response} <- Accounts.fetch_users() do
       conn
       |> put_status(200)
+      |> put_resp_header("content-type", "application/json")
       |> render("users.json", response)
     end
   end
