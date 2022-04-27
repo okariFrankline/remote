@@ -18,6 +18,9 @@ config :remote, RemoteWeb.Endpoint,
   pubsub_server: Remote.PubSub,
   live_view: [signing_salt: "O1gzSk3e"]
 
+# config for worker GenServer
+config :remote, Remote.Servers.Worker, run_every: :timer.seconds(60)
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
