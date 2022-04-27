@@ -20,6 +20,9 @@ config :remote, RemoteWeb.Endpoint,
   secret_key_base: "9eGhQG5tbUrR1Sh6lKUdPIvMNCcn8vhHQchIgST68HEjb6juVnifcWruFUiQ4Y5M",
   server: false
 
+# config for worker GenServer
+config :remote, Remote.Servers.Worker, run_every: :timer.seconds(2)
+
 # Print only warnings and errors during test
 config :logger, level: :warn
 
