@@ -18,12 +18,14 @@ defmodule Remote.DataCase do
 
   using do
     quote do
+      alias Ecto.Changeset
       alias Remote.Repo
 
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
       import Remote.DataCase
+      import Remote.Support.Factory
     end
   end
 
